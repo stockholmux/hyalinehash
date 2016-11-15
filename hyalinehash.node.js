@@ -55,7 +55,7 @@ function hyalineHash(client, subClient, redisKey, autoField) {
         client.hget(redisKey,fieldName, function(err,val) {
           if (err) {                                                //Emit errors if needed
             errEvents.emit('getting', err, redisKey, fieldName, val);
-            errEvenys.emit('any','getting', err, redisKey, fieldName, val);
+            errEvents.emit('any','getting', err, redisKey, fieldName, val);
           } else {
             shadowObj[fieldName] = String(val);                     //Finally set the shadowObj
           }
@@ -114,8 +114,8 @@ function hyalineHash(client, subClient, redisKey, autoField) {
       publicObj.channel,              
       function(err) {
         if (err) {                                             //Emit errors if needed
-          publicObj.errors.emit('subscribe', err, redisKey, values);
-          publicObj.errors.emit('any','subscribe', err, redisKey, values);
+          publicObj.errors.emit('subscribe', err, redisKey);
+          publicObj.errors.emit('any','subscribe', err, redisKey);
         }
       }
     );
@@ -133,8 +133,8 @@ function hyalineHash(client, subClient, redisKey, autoField) {
           publicObj.field(aKey,values[aKey],true);
         }
       });
-    } else if (values) {                                      //If not autoField then we just go through the establisehd fields and match them up with the value
-      fields.forEach(function(aField,index) {
+    } else if (values) {                                      //If not autoField then we just go through the established fields and match them up with the value
+      Object.keys(publicObj).forEach(function(aField,index) {
         shadowObj[aField] = values[index];
       });
     } else {                                                  //No fields, not auto, just make sure we always have an object
