@@ -1,0 +1,14 @@
+{
+  "name": "hyalinehash",
+  "version": "1.0.0",
+  "description": "Redis without callbacks",
+  "main": "hyalinehash.node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redis"
+  ],
+  "author": "Kyle J. Davis",
+  "license": "MIT"
+}
